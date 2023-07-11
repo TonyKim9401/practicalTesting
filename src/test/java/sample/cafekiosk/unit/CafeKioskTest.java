@@ -6,6 +6,7 @@ import sample.cafekiosk.unit.beverage.Americano;
 import sample.cafekiosk.unit.beverage.Latte;
 import sample.cafekiosk.unit.order.Order;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -87,8 +88,10 @@ class CafeKioskTest {
         assertThat(cafeKiosk.getBeverages()).isEmpty();
     }
 
+    @DisplayName("주문 목록에 담긴 상품들의 총 금액을 계산할 수 있다.")
     @Test
     void calculateTotalPrice() {
+        // given
         CafeKiosk cafeKiosk = new CafeKiosk();
         Americano americano = new Americano();
         Latte latte = new Latte();
@@ -96,23 +99,26 @@ class CafeKioskTest {
         cafeKiosk.add(americano, 1);
         cafeKiosk.add(latte, 1);
 
+        // when
         int totalPrice = cafeKiosk.calculateTotalPrice();
+
+        // then
         assertThat(totalPrice).isEqualTo(8500);
     }
 
-    /*
-        @Test
-        void createOrder() {
-            CafeKiosk cafeKiosk = new CafeKiosk();
-            Americano americano = new Americano();
 
-            cafeKiosk.add(americano, 1);
+    @Test
+    void createOrder() {
+        CafeKiosk cafeKiosk = new CafeKiosk();
+        Americano americano = new Americano();
 
-            Order order = cafeKiosk.createOrder();
-            assertThat(order.getBeverages()).hasSize(1);
-            assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
-        }
-        */
+        cafeKiosk.add(americano, 1);
+
+        Order order = cafeKiosk.createOrder(LocalDateTime.now());
+        assertThat(order.getBeverages()).hasSize(1);
+        assertThat(order.getBeverages().get(0).getName()).isEqualTo("아메리카노");
+    }
+
     @Test
     void createOrderWithCurrentTime() {
         CafeKiosk cafeKiosk = new CafeKiosk();
