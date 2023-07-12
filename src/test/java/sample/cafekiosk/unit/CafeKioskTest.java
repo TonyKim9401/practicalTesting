@@ -143,7 +143,4 @@ class CafeKioskTest {
                 .hasMessage("주문 시간이 아닙니다. 관리자에게 문희하세요.");
     }
 
-
-
-
 }
