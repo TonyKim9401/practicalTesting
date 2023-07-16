@@ -49,5 +49,4 @@ class MailServiceTest {
                 .save(any(MailSendHistory.class));
     }
 
-
 }
