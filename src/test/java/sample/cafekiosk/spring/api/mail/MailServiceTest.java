@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class MailServiceTest {
 
-    @Mock // Mock객체가 아닌 실제 객체를 받음
+    @Mock // Mock객체가 아닌 실제 객체를 받음(일부만 Mocking - 기능중에 spy가 있다!)
     private MailSendClient mailSendClient;
 
     @Mock
