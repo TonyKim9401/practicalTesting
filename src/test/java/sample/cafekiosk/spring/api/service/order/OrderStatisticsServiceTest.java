@@ -93,12 +93,12 @@ class OrderStatisticsServiceTest {
     }
 
     private Order createPaymentCompletedOrder(LocalDateTime now, List<Product> products) {
-        Order order1 = Order.builder()
+        Order order = Order.builder()
                 .products(products)
                 .orderStatus(OrderStatus.PAYMENT_COMPLETED)
                 .registeredDateTime(now)
                 .build();
-        return orderRepository.save(order1);
+        return orderRepository.save(order);
     }
 
     private Product createProduct(ProductType type, String productNumber, int price){

@@ -23,7 +23,7 @@ public class OrderStatisticsService {
     public boolean sendOrderStatisticsMail(LocalDate orderDate, String email){
         // 해당 일자에 결제 완료된 주문들을 가져와서
         List<Order> orders = orderRepository.findOrdersBy(
-                // 등록시간
+                // atStartOfDay <= 등록시간 < plusDays(1).atStartOfDay()
             orderDate.atStartOfDay(),
             orderDate.plusDays(1).atStartOfDay(),
             OrderStatus.PAYMENT_COMPLETED
