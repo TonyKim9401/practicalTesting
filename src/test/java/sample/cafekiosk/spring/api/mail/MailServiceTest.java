@@ -3,9 +3,7 @@ package sample.cafekiosk.spring.api.mail;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sample.cafekiosk.spring.client.mail.MailSendClient;
 import sample.cafekiosk.spring.domain.histody.mail.MailSendHistory;
@@ -13,12 +11,13 @@ import sample.cafekiosk.spring.domain.histody.mail.MailSendHistoryRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MailServiceTest {
 
-    @Spy // Mock객체가 아닌 실제 객체를 받음
+    @Mock // Mock객체가 아닌 실제 객체를 받음
     private MailSendClient mailSendClient;
 
     @Mock
@@ -32,19 +31,11 @@ class MailServiceTest {
     void sendMail() {
         // given
         /*
-        MailSendClient mailSendClient = mock(MailSendClient.class);
-        MailSendHistoryRepository mailSendHistoryRepository = mock(MailSendHistoryRepository.class);
-        MailService mailService = new MailService(mailSendClient, mailSendHistoryRepository);
-        */
-            // mock 객체 생성 후 주입
-        /* @Spy 환경에서는 작동 X
-         when(mailSendClient.sendEmail(any(String.class), any(String.class), any(String.class), any(String.class)))
+        Mockito.when(mailSendClient.sendEmail(any(String.class), any(String.class), any(String.class), any(String.class)))
                 .thenReturn(true);
         */
-
-        doReturn(true)
-                .when(mailSendClient)
-                .sendEmail(any(String.class), any(String.class), any(String.class), any(String.class));
+        given(mailSendClient.sendEmail(any(String.class), any(String.class), any(String.class), any(String.class)))
+                .willReturn(true);
 
         // when
         boolean result = mailService.sendMail("", "", "", "");
