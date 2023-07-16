@@ -19,6 +19,7 @@ public class OrderStatisticsService {
     private final OrderRepository orderRepository;
     private final MailService mailService;
 
+
     public boolean sendOrderStatisticsMail(LocalDate orderDate, String email){
         // 해당 일자에 결제 완료된 주문들을 가져와서
         List<Order> orders = orderRepository.findOrdersBy(
