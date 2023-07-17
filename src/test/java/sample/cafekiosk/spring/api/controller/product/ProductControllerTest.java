@@ -183,5 +183,4 @@ class ProductControllerTest extends ControllerTestSupport {
                 .andExpect(jsonPath("$.message").value("OK"))
                 .andExpect(jsonPath("$.data").isArray());
     }
-
 }
