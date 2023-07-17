@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class StockTest {
 
     //다이나믹 테스트의 기본 템플릿
+    /*
     @DisplayName("")
     @TestFactory
     Collection<DynamicTest> dynamicTest() {
@@ -26,6 +27,7 @@ class StockTest {
                 })
         );
     }
+    */
 
     @DisplayName("재고 차감 시나리오")
     @TestFactory

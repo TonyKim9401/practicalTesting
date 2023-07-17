@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk.spring.domain.product.Product;
 import sample.cafekiosk.spring.domain.product.ProductRepository;
@@ -24,8 +25,7 @@ import static sample.cafekiosk.spring.domain.product.ProductType.*;
 
 
 @Transactional
-@SpringBootTest
-class OrderRepositoryTest {
+class OrderRepositoryTest extends IntegrationTestSupport{
 
     @Autowired
     private OrderRepository orderRepository;
