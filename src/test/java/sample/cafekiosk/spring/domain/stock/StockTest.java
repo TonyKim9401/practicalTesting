@@ -48,5 +48,4 @@ class StockTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("차감할 재고 수량이 없습니다.");
     }
-    
 }
