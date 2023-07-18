@@ -12,4 +12,5 @@ public class CafekioskApplication {
 		SpringApplication.run(CafekioskApplication.class, args);
 	}
 
+	// 총정리
 }
